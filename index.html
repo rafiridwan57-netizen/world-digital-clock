@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Digital Clock - Multiple Time Zones</title>
+    <meta name="description" content="Display current time across multiple time zones in real-time with a modern, responsive digital clock.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="title">World Digital Clock</h1>
+                <p class="subtitle">Real-time across multiple time zones</p>
+            </div>
+            <div class="header-controls">
+                <button id="toggleFormat" class="btn btn-format" title="Toggle 12/24 hour format">
+                    <span class="format-icon">24h</span>
+                </button>
+                <button id="addClockBtn" class="btn btn-add" title="Add new time zone">
+                    <span class="plus-icon">+</span> Add Zone
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Time Zone Selection Modal -->
+            <div id="modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add Time Zone</h2>
+                        <button class="close-btn" id="closeModal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="search-box">
+                            <input 
+                                type="text" 
+                                id="zoneSearch" 
+                                class="search-input" 
+                                placeholder="Search time zones... (e.g., New York, Tokyo, London)"
+                                autocomplete="off"
+                            >
+                            <div id="searchResults" class="search-results"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clock Grid -->
+            <div id="clockGrid" class="clock-grid">
+                <!-- Clocks will be dynamically added here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🌍</div>
+                <h2>No time zones yet</h2>
+                <p>Click the "Add Zone" button to display time zones around the world</p>
+                <button id="emptyAddBtn" class="btn btn-primary">Add First Time Zone</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Real-Time Updates</h3>
+                    <p>Live time display updating every second across all time zones</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multiple Time Zones</h3>
+                    <p>Add, manage, and monitor multiple time zones simultaneously</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>12/24 Hour Toggle</h3>
+                    <p>Switch between 12-hour and 24-hour time format instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>City Information</h3>
+                    <p>See city name, UTC offset, and timezone details at a glance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Local Storage</h3>
+                    <p>Your selected time zones are saved and restored automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Works perfectly on desktop, tablet, and mobile devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 World Digital Clock. All rights reserved.</p>
+            <p class="footer-subtitle">Built with vanilla JavaScript | Real-time time zone conversion</p>
+        </div>
+    </footer>
+
+    <!-- Clock Template (Hidden) -->
+    <template id="clockTemplate">
+        <div class="clock-card" data-timezone="">
+            <div class="clock-header">
+                <div class="clock-info">
+                    <h3 class="city-name"></h3>
+                    <p class="timezone-offset"></p>
+                </div>
+                <button class="btn-remove" title="Remove this time zone">
+                    <span class="trash-icon">🗑️</span>
+                </button>
+            </div>
+            <div class="clock-display">
+                <div class="time-main"></div>
+                <div class="time-meridiem"></div>
+            </div>
+            <div class="clock-footer">
+                <p class="date-display"></p>
+                <p class="day-display"></p>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
